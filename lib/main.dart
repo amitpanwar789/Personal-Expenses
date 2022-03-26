@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import './widgets/user_transaction.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,33 +22,35 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Personal Expense'),
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                // ignore: sized_box_for_whitespace
-                Container(
-                  width: 1000,
-                  height: 150,
-                  child: Card(
-                    child: Text(
-                      "chart", style: TextStyle(fontSize: 25),
-                      textAlign: TextAlign.center,
-                      //style: TextStyle(fontSize: 43)
-                    ),
-                    color: Color.fromARGB(255, 196, 235, 197),
-                  ),
+      appBar: AppBar(
+        title: Text('Personal Expense'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            // ignore: sized_box_for_whitespace
+            Container(
+              width: 1000,
+              height: 150,
+              child: Card(
+                child: Text(
+                  "chart", style: TextStyle(fontSize: 25),
+                  textAlign: TextAlign.center,
+                  //style: TextStyle(fontSize: 43)
                 ),
-                UserTransaction(),
-        
-              ],
+                color: Color.fromARGB(255, 196, 235, 197),
+              ),
             ),
-          ),
-        ));
+            UserTransaction(),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),onPressed: (){},
+      ),
+    );
   }
 }
