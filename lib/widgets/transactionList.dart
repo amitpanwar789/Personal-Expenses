@@ -10,23 +10,25 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 555,
       child: ListView.builder(
           itemBuilder: ((context, index) {
-            return Card(
+            return Card(elevation: 5,//color: Theme.of(context).colorScheme.secondary,
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  child: Text("Rs ${user_transactions[index].price.toStringAsFixed(2)}",
+                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 13),
+                  child: Text(
+                      "Rs ${user_transactions[index].price.toStringAsFixed(2)}",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
-                          color: Color.fromARGB(255, 26, 187, 53))),
+                          color: Colors.white)),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.blue)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue.shade700),
+                      color: Color.fromARGB(255, 99, 144, 167)),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
