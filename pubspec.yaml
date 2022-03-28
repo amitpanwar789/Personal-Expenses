@@ -74,16 +74,20 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Open_Sans
+    - family: OpenSans
       fonts:
-        - asset: fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf
-        - asset: fonts/Open_Sans/static/OpenSans/OpenSans-Bold.ttf
+        - asset: fonts/Open_Sans/OpenSans/OpenSans-Regular.ttf
+        - asset: fonts/Open_Sans/OpenSans/OpenSans-Bold.ttf
           weight: 700
-    - family: Trajan Pro
+    - family: Raleway
       fonts:
-        - asset: fonts/TrajanPro.ttf
-        - asset: fonts/TrajanPro_Bold.ttf
+        - asset: fonts/Raleway/static/Raleway-MediumItalic.ttf
+        - asset: fonts/Raleway/static/Raleway-SemiBold.ttf
           weight: 700
+    - family: Kurale
+      fonts:
+        - asset: fonts/Kurale-Regular.ttf
+          weight: 400
   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

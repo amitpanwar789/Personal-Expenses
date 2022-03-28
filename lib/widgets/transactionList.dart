@@ -21,10 +21,11 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 15, vertical: 13),
                   child: Text(
                       "Rs ${user_transactions[index].price.toStringAsFixed(2)}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                          color: Colors.white)),
+                      style: Theme.of(context).textTheme.titleMedium,),
+                      // style: TextStyle(
+                      //     fontWeight: FontWeight.bold,
+                      //     fontSize: 22,
+                      //     color: Colors.white)),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.blue.shade700),
@@ -35,8 +36,9 @@ class TransactionList extends StatelessWidget {
                   children: [
                     Text(
                       user_transactions[index].title,
-                      style: TextStyle(
-                          fontSize: 18,
+                      style: TextStyle(color: Colors.blueGrey.shade600,
+                          fontSize: 22,
+                          fontFamily: 'Kurale',
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold),
                     ),

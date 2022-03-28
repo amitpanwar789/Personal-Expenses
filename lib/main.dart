@@ -5,7 +5,6 @@ import 'package:personal_expense/widgets/new_transaction.dart';
 import './widgets/transactionList.dart';
 import './models/tansaction.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,9 +14,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
-            .copyWith(secondary: Colors.orange.shade700),
-      ),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
+              .copyWith(secondary: Colors.orange.shade700),
+          fontFamily: 'OpenSans',
+          textTheme: TextTheme(
+              titleMedium: TextStyle(
+                  fontFamily: 'Kurale',
+                  fontSize: 22,fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 241, 233, 233))),
+          appBarTheme: AppBarTheme(
+              toolbarTextStyle: ThemeData.light()
+                  .textTheme
+                  .copyWith(
+                      titleMedium: TextStyle(
+                          fontFamily: 'Raleway',
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold))
+                  .headline6)),
       title: 'Personal Expense',
       home: MyHomePage(),
     );
@@ -57,11 +70,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 84, 126, 145),
+      backgroundColor: Color.fromARGB(255, 81, 122, 141),
       appBar: AppBar(
-        //backgroundColor: Theme.of(context).copyWith(splashColor: Colors.blue),
-        title: Text('Personal Expense'),
-      ),
+          //backgroundColor: Theme.of(context).copyWith(splashColor: Colors.blue),
+          title: Text(
+        'Personal Expense',
+      )),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
