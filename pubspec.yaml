@@ -88,6 +88,10 @@ flutter:
       fonts:
         - asset: fonts/Kurale-Regular.ttf
           weight: 400
+    - family: SigmarOne-Regular
+      fonts:
+      - asset: fonts/SigmarOne-Regular.ttf
+          
   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

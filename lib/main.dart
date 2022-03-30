@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
               .copyWith(secondary: Colors.orange.shade700),
           fontFamily: 'OpenSans',
           textTheme: TextTheme(
@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
                           fontFamily: 'Raleway',
                           fontSize: 50,
                           fontWeight: FontWeight.bold))
-                  .headline6)),
+                  .headline6),
+                  buttonTheme: ButtonThemeData(colorScheme:
+                   ColorScheme.fromSwatch(primarySwatch: Colors.purple),)),
       title: 'Personal Expense',
       home: MyHomePage(),
     );
@@ -45,8 +47,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> user_transactions = [
-    Transaction(
-        id: '4544', date: DateTime.now(), price: 46646, title: "Laptop"),
+    // Transaction(
+    //     id: '4544', date: DateTime.now(), price: 46646, title: "Laptop"),
   ];
   void AddNewTrans(String txtitle, double txtAmount) {
     final NewTrans = Transaction(
@@ -70,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 81, 122, 141),
+      //backgroundColor: Color.fromARGB(255, 81, 122, 141),
       appBar: AppBar(
           //backgroundColor: Theme.of(context).copyWith(splashColor: Colors.blue),
           title: Text(
@@ -98,8 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
-      floatingActionButton: FloatingActionButton(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(backgroundColor: Colors.purple,
         elevation: 7,
         child: Icon(Icons.create),
         onPressed: () => strtNewTrans(context),
