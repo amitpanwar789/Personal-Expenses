@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:personal_expense/widgets/chart.dart';
 import 'package:personal_expense/widgets/new_transaction.dart';
 import './widgets/transactionList.dart';
 import './models/tansaction.dart';
+import './widgets/chart.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +22,8 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
               titleMedium: TextStyle(
                   fontFamily: 'Kurale',
-                  fontSize: 22,fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 241, 233, 233))),
           appBarTheme: AppBarTheme(
               toolbarTextStyle: ThemeData.light()
@@ -31,8 +34,9 @@ class MyApp extends StatelessWidget {
                           fontSize: 50,
                           fontWeight: FontWeight.bold))
                   .headline6),
-                  buttonTheme: ButtonThemeData(colorScheme:
-                   ColorScheme.fromSwatch(primarySwatch: Colors.purple),)),
+          buttonTheme: ButtonThemeData(
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple),
+          )),
       title: 'Personal Expense',
       home: MyHomePage(),
     );
@@ -47,8 +51,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> user_transactions = [
-    // Transaction(
-    //     id: '4544', date: DateTime.now(), price: 46646, title: "Laptop"),
+    Transaction(
+        id: '4544', date: DateTime.now(), price: 46646, title: "Laptop"),
   ];
   void AddNewTrans(String txtitle, double txtAmount) {
     final NewTrans = Transaction(
@@ -69,6 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  List<Transaction> get _recentTransaction {
+    return user_transactions.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,24 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             // ignore: sized_box_for_whitespace
-            Container(
-              width: 1000,
-              height: 150,
-              child: Card(
-                child: Text(
-                  "chart", style: TextStyle(fontSize: 25),
-                  textAlign: TextAlign.center,
-                  //style: TextStyle(fontSize: 43)
-                ),
-                color: Color.fromARGB(255, 196, 235, 197),
-              ),
-            ),
+            Chart(_recentTransaction),
             TransactionList(user_transactions),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton(backgroundColor: Colors.purple,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purple,
         elevation: 7,
         child: Icon(Icons.create),
         onPressed: () => strtNewTrans(context),

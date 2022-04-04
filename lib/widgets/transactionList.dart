@@ -35,22 +35,27 @@ class TransactionList extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 13),
-                          child: Text(
-                            "Rs ${user_transactions[index].price.toStringAsFixed(2)}",
-                            style: Theme.of(context).textTheme.titleMedium,
+                        Flexible(
+                          fit :  FlexFit.tight,
+                          child: FittedBox(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 13),
+                              child: Text(
+                                "Rs ${user_transactions[index].price.toStringAsFixed(0)}",
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              // style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //     fontSize: 22,
+                              //     color: Colors.white)),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 12),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.blue.shade700),
+                                  color: Color.fromARGB(255, 99, 144, 167)),
+                            ),
                           ),
-                          // style: TextStyle(
-                          //     fontWeight: FontWeight.bold,
-                          //     fontSize: 22,
-                          //     color: Colors.white)),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 12),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blue.shade700),
-                              color: Color.fromARGB(255, 99, 144, 167)),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +70,7 @@ class TransactionList extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              DateFormat('EEE MMM d yyyy')
+                              DateFormat('EEE MMM d yy')
                                   .add_jm()
                                   .format(user_transactions[index].date),
                               style: TextStyle(
@@ -73,6 +78,10 @@ class TransactionList extends StatelessWidget {
                                   color: Color.fromARGB(255, 109, 108, 108)),
                             ),
                           ],
+                        ),
+                        FlatButton(
+                          onPressed: () => user_transactions.removeAt(index),
+                          child: Icon(Icons.delete),
                         )
                       ],
                     ));

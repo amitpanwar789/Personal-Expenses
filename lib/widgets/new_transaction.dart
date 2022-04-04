@@ -16,8 +16,8 @@ class _NewTransactionState extends State<NewTransaction> {
   void submited() {
     if (titleController.text.isEmpty || double.parse(amountController.text) < 0)
       return;
-    widget.AddNewTrans(titleController.text,
-        double.parse(amountController.text));
+    widget.AddNewTrans(
+        titleController.text, double.parse(amountController.text));
     Navigator.of(context).pop();
   }
 
@@ -37,6 +37,7 @@ class _NewTransactionState extends State<NewTransaction> {
         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
           TextField(
+            style: TextStyle(color: Color.fromARGB(255, 137, 136, 136)),
             decoration: InputDecoration(
               labelText: "Title",
             ),
@@ -61,7 +62,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Colors.green),
+                    color: Colors.purple),
               ),
               onPressed: submited)
         ]),
