@@ -1,12 +1,15 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names, file_names, prefer_const_literals_to_create_immutables
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/tansaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> user_transactions;
-  TransactionList(this.user_transactions);
+  final Function  deleteItem ;
+  TransactionList(this.user_transactions, this.deleteItem);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +39,7 @@ class TransactionList extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Flexible(
-                          fit :  FlexFit.tight,
+                          fit: FlexFit.tight,
                           child: FittedBox(
                             child: Container(
                               margin: EdgeInsets.symmetric(
@@ -52,8 +55,10 @@ class TransactionList extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 12),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.blue.shade700),
-                                  color: Color.fromARGB(255, 99, 144, 167)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5)),
+                                  border: Border.all(color: Colors.purple),
+                                  color: Colors.purple),
                             ),
                           ),
                         ),
@@ -80,7 +85,9 @@ class TransactionList extends StatelessWidget {
                           ],
                         ),
                         FlatButton(
-                          onPressed: () => user_transactions.removeAt(index),
+                          onPressed:(() {
+                            deleteItem(user_transactions[index].id);
+                          } ) ,
                           child: Icon(Icons.delete),
                         )
                       ],

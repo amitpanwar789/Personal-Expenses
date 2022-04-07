@@ -54,10 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
         id: '4544', date: DateTime.now(), price: 46646, title: "Laptop"),
   ];
-  void AddNewTrans(String txtitle, double txtAmount) {
+  void AddNewTrans(String txtitle, double txtAmount , DateTime pickedDateTime) {
     final NewTrans = Transaction(
         id: DateTime.now().toString(),
-        date: DateTime.now(),
+        date: pickedDateTime,
         price: txtAmount,
         title: txtitle);
     setState(() {
@@ -78,6 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
       return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
     }).toList();
   }
+  void deleteItem(String id){
+    setState(() {
+      user_transactions.removeWhere((element) => element.id == id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // ignore: sized_box_for_whitespace
             Chart(_recentTransaction),
-            TransactionList(user_transactions),
+            TransactionList(user_transactions , deleteItem),
           ],
         ),
       ),
